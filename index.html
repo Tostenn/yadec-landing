@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Yadec Consulting | Stratégie Marketing & Expérience Client à Abidjan
+    </title>
+    <meta
+      name="description"
+      content="Yadec Consulting accompagne votre entreprise à Abidjan pour améliorer l'efficacité de votre marketing, sublimer l'expérience client et accélérer vos ventes."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                dark: "#111111",
+                primary: "#E30613",
+                accent: "#A3081C",
+                light: "#F8F9FA",
+                gray: "#f4f4f2", // Gris très clair pour le fond
+              },
+            },
+            fontFamily: {
+              sans: ["Outfit", "sans-serif"],
+              serif: ["DM Serif Display", "serif"],
+            },
+            animation: {
+              marquee: "marquee 25s linear infinite",
+            },
+            keyframes: {
+              marquee: {
+                "0%": { transform: "translateX(0%)" },
+                "100%": { transform: "translateX(-50%)" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+      body {
+        background-color: #ffffff;
+        color: #111111;
+        overflow-x: hidden;
+      }
+
+      /* ── CURSOR (Claude) ── */
+      @media (pointer: fine) {
+        body {
+          cursor: none;
+        }
+        .cursor {
+          position: fixed;
+          width: 12px;
+          height: 12px;
+          background: #e30613;
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 9999;
+          transform: translate(-50%, -50%);
+          transition:
+            width 0.3s,
+            height 0.3s,
+            background 0.3s;
+        }
+        .cursor-ring {
+          position: fixed;
+          width: 36px;
+          height: 36px;
+          border: 1.5px solid rgba(227, 6, 19, 0.5);
+          border-radius: 50%;
+          pointer-events: none;
+          z-index: 9998;
+          transform: translate(-50%, -50%);
+          transition:
+            transform 0.12s ease-out,
+            width 0.3s,
+            height 0.3s,
+            opacity 0.3s;
+        }
+        a:hover ~ .cursor,
+        button:hover ~ .cursor {
+          width: 24px;
+          height: 24px;
+          background: rgba(227, 6, 19, 0.2);
+        }
+        a:hover ~ .cursor-ring,
+        button:hover ~ .cursor-ring {
+          width: 48px;
+          height: 48px;
+          border-color: transparent;
+        }
+      }
+
+      /* ── ANIMATIONS ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.8s ease,
+          transform 0.8s ease;
+      }
+      .reveal.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .delay-100 {
+        transition-delay: 0.1s;
+      }
+      .delay-200 {
+        transition-delay: 0.2s;
+      }
+      .delay-300 {
+        transition-delay: 0.3s;
+      }
+
+      /* Ligne rouge au hover (Enjeux Claude) */
+      .hover-line-bottom::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: #e30613;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+      .hover-line-bottom:hover::after {
+        transform: scaleX(1);
+      }
+
+      /* Ligne connectrice du process */
+      .process-line::before {
+        content: "";
+        position: absolute;
+        top: 28px;
+        left: 10%;
+        right: 10%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(227, 6, 19, 0.3),
+          transparent
+        );
+        z-index: 0;
+      }
+      @media (max-width: 1024px) {
+        .process-line::before {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="font-sans antialiased selection:bg-brand-primary/10 selection:text-brand-primary"
+  >
+    <div class="cursor hidden md:block" id="cursor"></div>
+    <div class="cursor-ring hidden md:block" id="cursorRing"></div>
+
+    <header
+      id="mainNav"
+      class="fixed w-full z-50 transition-all duration-400 py-5 bg-white/90 backdrop-blur-md border-b border-gray-100"
+    >
+      <div
+        class="max-w-7xl mx-auto px-5 lg:px-8 flex items-center justify-between"
+      >
+        <a href="#" class="flex items-center gap-3 group">
+          <img
+            class="h-10 w-auto object-contain rounded-lg transition-transform group-hover:scale-105"
+            src="/image.png"
+            alt="Yadec Consulting"
+          />
+        </a>
+
+        <nav class="hidden md:flex gap-10">
+          <a
+            href="#enjeux"
+            class="text-[15px] font-medium text-gray-600 hover:text-brand-primary transition-colors"
+            >Vos Enjeux</a
+          >
+          <a
+            href="#solutions"
+            class="text-[15px] font-medium text-gray-600 hover:text-brand-primary transition-colors"
+            >Nos Solutions</a
+          >
+          <a
+            href="#process"
+            class="text-[15px] font-medium text-gray-600 hover:text-brand-primary transition-colors"
+            >Notre Approche</a
+          >
+          <a
+            href="#temoignages"
+            class="text-[15px] font-medium text-gray-600 hover:text-brand-primary transition-colors"
+            >Cas Clients</a
+          >
+        </nav>
+
+        <a
+          href="#contact"
+          class="hidden md:flex items-center gap-2 bg-brand-primary hover:bg-brand-accent text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all hover:-translate-y-0.5 shadow-lg shadow-brand-primary/20"
+        >
+          Parlez à un expert
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </a>
+
+        <button class="md:hidden text-brand-dark">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </header>
+<!-- 
+   <section class="relative pt-32 pb-20 lg:pt-40 lg:pb-24 overflow-hidden bg-brand-light">
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-brand-primary/5 rounded-full blur-[100px] animate-pulse"></div>
+    <div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-brand-primary/5 rounded-full blur-[80px]"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 40px 40px;"></div>
+  </div> -->
+
+  <div class="pt-16 mb-4">
+    <img src="/hero.png" class="w-full" alt="">
+  </div>
+
+  <section class="relative  bg-brand-light">
+  <div class="absolute inset-0 z-0 pointer-events-none">
+    <div class="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-brand-primary/5 rounded-full blur-[100px]"></div>
+    <div class="absolute inset-0 opacity-[0.03]" style="background-image: radial-gradient(#000 1px, transparent 1px); background-size: 40px 40px;"></div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 relative z-10 ">
+    <div class="inline-flex absolute -top-16 items-center gap-2 bg-brand-primary border border-brand-primary/20 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest mb-8">
+      <span class="w-1.5 h-1.5 rounded-full bg-primary animate-ping"></span>
+      L'expertise qui transforme votre business
+    </div>
+
+    <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl text-brand-dark leading-[1.05] tracking-tight mb-12 max-w-5xl">
+      Accélérez votre Croissance, <br />
+      <em class="text-brand-primary italic">Maximisez votre ROI.</em>
+    </h1>
+
+    <div class="flex flex-col items-start gap-8 md:gap-16 border-t border-gray-200 pt-10">
+
+      <div class="w-full md:max-w-3xl">
+        <p class="text-2xl text-gray-600  leading-relaxed font-light mb-4">
+          Ne vous contentez plus d'être visible. <strong>Yadec Consulting</strong> déploie des stratégies basées sur la donnée pour convertir votre audience en revenus concrets.
+        </p>
+        
+        <p class="text-sm text-gray-400 flex items-center gap-2">
+          <span class="flex -space-x-2">
+            <span class="w-6 h-6 rounded-full bg-gray-200 border-2 border-white"></span>
+            <span class="w-6 h-6 rounded-full bg-gray-400 border-2 border-white"></span>
+            <span class="w-6 h-6 rounded-full bg-brand-primary/20 border-2 border-white"></span>
+          </span>
+          Rejoint par +50 entreprises leaders.
+        </p>
+      </div>
+      <div class="flex flex-col sm:flex-row gap-4 shrink-0 w-full md:w-auto">
+        <a href="#contact" class="bg-brand-primary text-white px-8 py-5 rounded-full font-semibold transition-all hover:bg-brand-accent hover:-translate-y-1 shadow-xl shadow-brand-primary/30 flex items-center justify-center gap-2 group">
+          Multiplier mes résultats
+          <i data-lucide="trending-up" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+        </a>
+        <a href="#solutions" class="bg-white text-brand-dark border border-gray-200 px-8 py-5 rounded-full font-semibold transition-all hover:border-brand-primary hover:text-brand-primary hover:bg-gray-50 text-center">
+          Notre méthode
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+</section>
+    <div class="bg-white border-y border-gray-100 py-12 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8 mb-8">
+        <span
+          class="text-xs font-bold text-gray-400 uppercase tracking-[0.2em] block text-center md:text-left"
+        >
+          Ils nous font confiance
+        </span>
+      </div>
+
+      <div class="relative flex overflow-x-hidden group">
+        <div
+          class="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-white to-transparent z-10"
+        ></div>
+        <div
+          class="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-white to-transparent z-10"
+        ></div>
+
+        <div
+          class="flex animate-marquee whitespace-nowrap items-center gap-16 lg:gap-24"
+        >
+          <div
+            class="flex items-center gap-16 lg:gap-24 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500 text-2xl font-serif text-brand-dark"
+          >
+            <span class="flex items-center gap-2">Orange CI</span>
+            <span class="flex items-center gap-2">BNI</span>
+            <span class="flex items-center gap-2">NSIA Banque</span>
+            <span class="flex items-center gap-2">MTN CI</span>
+            <span class="flex items-center gap-2">Air Côte d'Ivoire</span>
+            <span class="flex items-center gap-2">SOTRA</span>
+          </div>
+
+          <div
+            class="flex items-center gap-16 lg:gap-24 grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-500 text-2xl font-serif text-brand-dark"
+          >
+            <span class="flex items-center gap-2">Orange CI</span>
+            <span class="flex items-center gap-2">BNI</span>
+            <span class="flex items-center gap-2">NSIA Banque</span>
+            <span class="flex items-center gap-2">MTN CI</span>
+            <span class="flex items-center gap-2">Air Côte d'Ivoire</span>
+            <span class="flex items-center gap-2">SOTRA</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="py-20 lg:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div
+          class="grid grid-cols-2 md:grid-cols-4 gap-px bg-gray-100 border border-gray-100 rounded-3xl overflow-hidden"
+        >
+          <div class="bg-white p-10 text-center group">
+            <div
+              class="w-12 h-12 mx-auto bg-brand-light text-brand-primary rounded-full flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+            >
+              <i data-lucide="check-circle" class="w-6 h-6"></i>
+            </div>
+            <p class="font-serif text-4xl lg:text-5xl text-brand-dark mb-2">
+              150<span class="text-brand-primary">+</span>
+            </p>
+            <p
+              class="text-sm font-medium text-gray-500 uppercase tracking-wide"
+            >
+              Projets réalisés
+            </p>
+          </div>
+          <div class="bg-white p-10 text-center group">
+            <div
+              class="w-12 h-12 mx-auto bg-brand-light text-brand-primary rounded-full flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+            >
+              <i data-lucide="smile" class="w-6 h-6"></i>
+            </div>
+            <p class="font-serif text-4xl lg:text-5xl text-brand-dark mb-2">
+              98<span class="text-brand-primary">%</span>
+            </p>
+            <p
+              class="text-sm font-medium text-gray-500 uppercase tracking-wide"
+            >
+              Clients satisfaits
+            </p>
+          </div>
+          <div class="bg-white p-10 text-center group">
+            <div
+              class="w-12 h-12 mx-auto bg-brand-light text-brand-primary rounded-full flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+            >
+              <i data-lucide="trending-up" class="w-6 h-6"></i>
+            </div>
+            <p class="font-serif text-4xl lg:text-5xl text-brand-dark mb-2">
+              <span class="text-brand-primary text-3xl">X</span>3
+            </p>
+            <p
+              class="text-sm font-medium text-gray-500 uppercase tracking-wide"
+            >
+              Taux de conversion
+            </p>
+          </div>
+          <div class="bg-white p-10 text-center group">
+            <div
+              class="w-12 h-12 mx-auto bg-brand-light text-brand-primary rounded-full flex items-center justify-center mb-4 transition-transform group-hover:scale-110"
+            >
+              <i data-lucide="award" class="w-6 h-6"></i>
+            </div>
+            <p class="font-serif text-4xl lg:text-5xl text-brand-dark mb-2">
+              10<span class="text-brand-primary">+</span>
+            </p>
+            <p
+              class="text-sm font-medium text-gray-500 uppercase tracking-wide"
+            >
+              Années d'expertise
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="enjeux" class="py-20 lg:py-24 bg-brand-light">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+          <span
+            class="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4 block"
+            >Défis & Opportunités</span
+          >
+          <h2 class="font-serif text-4xl md:text-5xl text-brand-dark mb-6">
+            Vos Enjeux Marketing & CX
+          </h2>
+          <p class="text-gray-600 text-lg font-light">
+            Dans un marché saturé, l'excellence opérationnelle et l'émotion
+            client sont vos plus grands leviers de différenciation.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div
+            class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover-line-bottom group reveal"
+          >
+            <div class="text-xs font-serif text-gray-300 tracking-widest mb-4">
+              01
+            </div>
+            <div
+              class="w-14 h-14 bg-brand-primary/5 text-brand-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-primary group-hover:text-white transition-colors"
+            >
+              <i data-lucide="zap" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-bold text-brand-dark mb-3">
+              Accélérer les ventes
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Alignez vos efforts marketing sur vos objectifs pour booster
+              l'acquisition et la conversion de vos prospects.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover-line-bottom group reveal delay-100"
+          >
+            <div class="text-xs font-serif text-gray-300 tracking-widest mb-4">
+              02
+            </div>
+            <div
+              class="w-14 h-14 bg-brand-primary/5 text-brand-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-primary group-hover:text-white transition-colors"
+            >
+              <i data-lucide="lightbulb" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-bold text-brand-dark mb-3">
+              Innover vos offres
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Concevez des produits ou services disruptifs qui répondent
+              précisément aux mutations de votre marché.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover-line-bottom group reveal delay-200"
+          >
+            <div class="text-xs font-serif text-gray-300 tracking-widest mb-4">
+              03
+            </div>
+            <div
+              class="w-14 h-14 bg-brand-primary/5 text-brand-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-primary group-hover:text-white transition-colors"
+            >
+              <i data-lucide="heart" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-bold text-brand-dark mb-3">
+              Susciter l'émotion
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Faites vivre des expériences mémorables pour ancrer votre marque
+              dans l'esprit de vos clients.
+            </p>
+          </div>
+
+          <div
+            class="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm relative overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover-line-bottom group reveal delay-300"
+          >
+            <div class="text-xs font-serif text-gray-300 tracking-widest mb-4">
+              04
+            </div>
+            <div
+              class="w-14 h-14 bg-brand-primary/5 text-brand-primary rounded-xl flex items-center justify-center mb-6 group-hover:bg-brand-primary group-hover:text-white transition-colors"
+            >
+              <i data-lucide="target" class="w-7 h-7"></i>
+            </div>
+            <h3 class="text-xl font-bold text-brand-dark mb-3">
+              Gagner en impact
+            </h3>
+            <p class="text-gray-500 text-sm leading-relaxed">
+              Clarifiez votre positionnement et optimisez votre présence pour
+              dominer votre écosystème digital.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="solutions" class="py-20 lg:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="grid md:grid-cols-2 gap-12 items-end mb-16">
+          <div class="reveal">
+            <span
+              class="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4 block"
+              >Nos Expertises</span
+            >
+            <h2 class="font-serif text-4xl md:text-5xl text-brand-dark">
+              Une expertise à 360°<br />pour votre
+              <em class="not-italic text-brand-primary">croissance</em>
+            </h2>
+          </div>
+          <p class="text-gray-600 text-lg font-light pb-2 reveal delay-100">
+            "Nous ne nous contentons pas de conseiller, nous bâtissons les
+            leviers de votre croissance future. De l'analyse au déploiement."
+          </p>
+        </div>
+
+        <div
+          class="flex flex-col gap-px bg-gray-100 border border-gray-100 rounded-[2rem] overflow-hidden"
+        >
+          <div class="grid md:grid-cols-2 gap-px bg-gray-100">
+            <div class="bg-brand-primary text-white p-10 lg:p-14 reveal">
+              <div
+                class="text-xs font-bold tracking-widest text-white/50 uppercase mb-8"
+              >
+                Solution 01
+              </div>
+              <div
+                class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-8"
+              >
+                <i data-lucide="bar-chart-3" class="w-7 h-7"></i>
+              </div>
+              <h3 class="font-serif text-3xl mb-4">
+                Analyse Stratégique & Performance
+              </h3>
+              <p class="text-white/80 mb-8 font-light text-sm">
+                Le marketing commence par la compréhension. Nous plongeons dans
+                vos données pour identifier les gisements de croissance
+                inexploités.
+              </p>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-sm">
+                  <span class="text-white/70 mt-0.5">→</span> Études de marché &
+                  Veille concurrentielle
+                </li>
+                <li class="flex items-start gap-3 text-sm">
+                  <span class="text-white/70 mt-0.5">→</span> Audit des canaux
+                  de distribution
+                </li>
+                <li class="flex items-start gap-3 text-sm">
+                  <span class="text-white/70 mt-0.5">→</span> Plan de
+                  transformation & Gouvernance
+                </li>
+              </ul>
+            </div>
+            <div
+              class="bg-white relative min-h-[300px] overflow-hidden group reveal delay-100"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+                alt="Audit"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent flex items-end p-10"
+              >
+                <p class="font-serif text-2xl text-white">
+                  Transformez vos données en décisions gagnantes.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-px bg-gray-100">
+            <div
+              class="bg-white relative min-h-[300px] overflow-hidden group md:order-1 order-2 reveal"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
+                alt="Lancement"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent flex items-end p-10"
+              >
+                <p class="font-serif text-2xl text-white">
+                  Une offre bien marketée se vend 3x plus vite.
+                </p>
+              </div>
+            </div>
+            <div
+              class="bg-white text-brand-dark p-10 lg:p-14 md:order-2 order-1 reveal delay-100"
+            >
+              <div
+                class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-8"
+              >
+                Solution 02
+              </div>
+              <div
+                class="w-14 h-14 bg-brand-light text-brand-primary rounded-xl flex items-center justify-center mb-8"
+              >
+                <i data-lucide="rocket" class="w-7 h-7"></i>
+              </div>
+              <h3 class="font-serif text-3xl mb-4">
+                Marketing de l'Offre & Lancement
+              </h3>
+              <p class="text-gray-500 mb-8 font-light text-sm">
+                Transformer un bon produit en succès exige une narration forte.
+                De l'analyse à la mise sur le marché, nous optimisons votre
+                valeur perçue.
+              </p>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-sm text-gray-600">
+                  <span class="text-brand-primary mt-0.5">→</span> Révision du
+                  business model (ROI)
+                </li>
+                <li class="flex items-start gap-3 text-sm text-gray-600">
+                  <span class="text-brand-primary mt-0.5">→</span> Stratégies de
+                  Cross Selling & Up Selling
+                </li>
+                <li class="flex items-start gap-3 text-sm text-gray-600">
+                  <span class="text-brand-primary mt-0.5">→</span> Outils d'aide
+                  à la vente (Sales Enablement)
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-px bg-gray-100">
+            <div class="bg-white text-brand-dark p-10 lg:p-14 reveal">
+              <div
+                class="text-xs font-bold tracking-widest text-gray-400 uppercase mb-8"
+              >
+                Solution 03
+              </div>
+              <div
+                class="w-14 h-14 bg-brand-light text-brand-primary rounded-xl flex items-center justify-center mb-8"
+              >
+                <i data-lucide="users" class="w-7 h-7"></i>
+              </div>
+              <h3 class="font-serif text-3xl mb-4">
+                Expérience Client & Acquisition Digitale
+              </h3>
+              <p class="text-gray-500 mb-8 font-light text-sm">
+                Nous transformons chaque interaction en émotion positive. Du
+                premier clic à la fidélisation, nous optimisons tout le
+                parcours.
+              </p>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-sm text-gray-600">
+                  <span class="text-brand-primary mt-0.5">→</span> Design UX/UI
+                  des points de contact
+                </li>
+                <li class="flex items-start gap-3 text-sm text-gray-600">
+                  <span class="text-brand-primary mt-0.5">→</span> Analyse de
+                  satisfaction & Fidélisation
+                </li>
+                <li class="flex items-start gap-3 text-sm text-gray-600">
+                  <span class="text-brand-primary mt-0.5">→</span> Growth
+                  Marketing (Stratégies d'acquisition)
+                </li>
+              </ul>
+            </div>
+            <div
+              class="bg-white relative min-h-[300px] overflow-hidden group reveal delay-100"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&w=800&q=80"
+                alt="CX"
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent flex items-end p-10"
+              >
+                <p class="font-serif text-2xl text-white">
+                  Chaque interaction devient une opportunité de fidélisation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="py-20 lg:py-24 bg-brand-light">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+          <span
+            class="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4 block"
+            >Notre Approche</span
+          >
+          <h2 class="font-serif text-4xl md:text-5xl text-brand-dark mb-4">
+            Une méthode éprouvée,<br />des
+            <em class="not-italic text-brand-primary">résultats garantis</em>
+          </h2>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-0 relative process-line"
+        >
+          <div class="text-center px-4 relative group reveal">
+            <div
+              class="w-14 h-14 mx-auto rounded-full bg-white border border-gray-200 flex items-center justify-center mb-6 relative z-10 transition-colors group-hover:bg-brand-primary group-hover:border-brand-primary"
+            >
+              <span
+                class="font-serif text-xl text-brand-primary group-hover:text-white transition-colors"
+                >01</span
+              >
+            </div>
+            <h3 class="font-bold text-brand-dark mb-3">Diagnostic 360°</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Analyse de vos forces, faiblesses et opportunités marché.
+            </p>
+          </div>
+
+          <div class="text-center px-4 relative group reveal delay-100">
+            <div
+              class="w-14 h-14 mx-auto rounded-full bg-white border border-gray-200 flex items-center justify-center mb-6 relative z-10 transition-colors group-hover:bg-brand-primary group-hover:border-brand-primary"
+            >
+              <span
+                class="font-serif text-xl text-brand-primary group-hover:text-white transition-colors"
+                >02</span
+              >
+            </div>
+            <h3 class="font-bold text-brand-dark mb-3">Stratégie CX</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Co-construction d'une roadmap alignée sur vos objectifs.
+            </p>
+          </div>
+
+          <div class="text-center px-4 relative group reveal delay-200">
+            <div
+              class="w-14 h-14 mx-auto rounded-full bg-white border border-gray-200 flex items-center justify-center mb-6 relative z-10 transition-colors group-hover:bg-brand-primary group-hover:border-brand-primary"
+            >
+              <span
+                class="font-serif text-xl text-brand-primary group-hover:text-white transition-colors"
+                >03</span
+              >
+            </div>
+            <h3 class="font-bold text-brand-dark mb-3">Déploiement</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Accompagnement terrain pour une mise en œuvre sans friction.
+            </p>
+          </div>
+
+          <div class="text-center px-4 relative group reveal delay-300">
+            <div
+              class="w-14 h-14 mx-auto rounded-full bg-white border border-gray-200 flex items-center justify-center mb-6 relative z-10 transition-colors group-hover:bg-brand-primary group-hover:border-brand-primary shadow-[0_0_15px_rgba(227,6,19,0.2)]"
+            >
+              <span
+                class="font-serif text-xl text-brand-primary group-hover:text-white transition-colors"
+                >04</span
+              >
+            </div>
+            <h3 class="font-bold text-brand-dark mb-3">Automatisation</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Création de workflows (n8n, IA) pour maximiser votre efficacité.
+            </p>
+          </div>
+
+          <div class="text-center px-4 relative group reveal delay-[400ms]">
+            <div
+              class="w-14 h-14 mx-auto rounded-full bg-white border border-gray-200 flex items-center justify-center mb-6 relative z-10 transition-colors group-hover:bg-brand-primary group-hover:border-brand-primary"
+            >
+              <span
+                class="font-serif text-xl text-brand-primary group-hover:text-white transition-colors"
+                >05</span
+              >
+            </div>
+            <h3 class="font-bold text-brand-dark mb-3">Optimisation</h3>
+            <p class="text-sm text-gray-500 leading-relaxed">
+              Suivi des KPIs et ajustements pour garantir votre ROI.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="temoignages" class="py-20 lg:py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div
+          class="flex flex-col md:flex-row justify-between items-end mb-16 reveal"
+        >
+          <div>
+            <span
+              class="text-brand-primary font-bold text-xs tracking-widest uppercase mb-4 block"
+              >Témoignages Clients</span
+            >
+            <h2 class="font-serif text-4xl md:text-5xl text-brand-dark">
+              L'impact en
+              <em class="not-italic text-brand-primary">chiffres</em>
+            </h2>
+          </div>
+          <div class="flex items-center gap-2 mt-4 md:mt-0">
+            <div class="text-yellow-400 flex">
+              <i data-lucide="star" class="w-5 h-5 fill-current"></i
+              ><i data-lucide="star" class="w-5 h-5 fill-current"></i
+              ><i data-lucide="star" class="w-5 h-5 fill-current"></i
+              ><i data-lucide="star" class="w-5 h-5 fill-current"></i
+              ><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+            </div>
+            <span class="text-sm text-gray-500 font-medium"
+              >4.9/5 · 150+ projets</span
+            >
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-[1.2fr_1fr] gap-6">
+          <div
+            class="bg-brand-light p-10 lg:p-14 rounded-[2rem] border border-gray-100 transition-transform hover:-translate-y-1 reveal"
+          >
+            <div
+              class="font-serif text-[80px] text-brand-primary/10 leading-none mb-[-20px]"
+            >
+              "
+            </div>
+            <p
+              class="font-serif text-2xl text-brand-dark italic mb-8 leading-relaxed"
+            >
+              "L'intervention de Yadec sur la refonte de notre parcours client a
+              été décisive. En 6 mois, nous avons constaté une augmentation de
+              <strong class="text-brand-primary not-italic"
+                >+34% du taux de conversion</strong
+              >
+              en boutique. Une approche vraiment orientée ROI."
+            </p>
+            <div class="flex flex-wrap gap-4 mb-8">
+              <div class="bg-white border border-gray-200 px-5 py-3 rounded-xl">
+                <div class="font-serif text-2xl text-brand-primary">+34%</div>
+                <div class="text-xs text-gray-500 uppercase tracking-wide">
+                  Conversion
+                </div>
+              </div>
+              <div class="bg-white border border-gray-200 px-5 py-3 rounded-xl">
+                <div class="font-serif text-2xl text-brand-primary">-15%</div>
+                <div class="text-xs text-gray-500 uppercase tracking-wide">
+                  Plaintes SAV
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-4 pt-6 border-t border-gray-200">
+              <img
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                class="w-12 h-12 rounded-full object-cover"
+                alt="Kouamé"
+              />
+              <div>
+                <div class="font-bold text-brand-dark">Kouamé S.</div>
+                <div class="text-xs text-gray-500">
+                  Directeur Commercial · Retail
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-6">
+            <div
+              class="bg-white p-8 rounded-[2rem] border border-gray-200 shadow-sm transition-transform hover:-translate-y-1 reveal delay-100"
+            >
+              <div
+                class="font-serif text-[60px] text-gray-200 leading-none mb-[-15px]"
+              >
+                "
+              </div>
+              <p class="text-gray-600 italic mb-6">
+                "Pour le lancement de notre application, l'équipe a géré toute
+                la stratégie Go-To-Market. Résultat : plus de
+                <strong class="text-brand-dark not-italic"
+                  >12 000 leads qualifiés</strong
+                >
+                dès le premier mois."
+              </p>
+              <div
+                class="flex items-center gap-4 pt-4 border-t border-gray-100"
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&q=80"
+                  class="w-10 h-10 rounded-full object-cover"
+                  alt="Awa"
+                />
+                <div>
+                  <div class="font-bold text-brand-dark text-sm">Awa D.</div>
+                  <div class="text-xs text-gray-500">CEO · Fintech</div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="bg-brand-dark p-8 rounded-[2rem] border border-gray-800 shadow-sm transition-transform hover:-translate-y-1 reveal delay-200 text-white"
+            >
+              <div
+                class="font-serif text-[60px] text-white/10 leading-none mb-[-15px]"
+              >
+                "
+              </div>
+              <p class="text-gray-300 italic mb-6">
+                "Grâce à la stratégie CX, notre
+                <strong class="text-brand-primary not-italic"
+                  >NPS a bondi de 28 à 67 points</strong
+                >
+                en un an. Nos équipes sont transformées."
+              </p>
+              <div
+                class="flex items-center gap-4 pt-4 border-t border-gray-800"
+              >
+                <div
+                  class="w-10 h-10 rounded-full bg-brand-primary flex items-center justify-center font-bold text-sm"
+                >
+                  KA
+                </div>
+                <div>
+                  <div class="font-bold text-white text-sm">Konan A.</div>
+                  <div class="text-xs text-gray-400">DG · Assurance</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="py-10 pb-24 bg-white">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div
+          class="bg-brand-primary rounded-[2.5rem] p-10 lg:p-16 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10 reveal"
+        >
+          <div
+            class="absolute top-[-50%] right-[-10%] w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl pointer-events-none"
+          ></div>
+
+          <div class="relative z-10 max-w-2xl text-center md:text-left">
+            <h2
+              class="font-serif text-3xl md:text-5xl text-white mb-4 leading-tight"
+            >
+              Prêt à transformer votre marketing en avantage compétitif ?
+            </h2>
+            <p class="text-white/80 text-lg font-light">
+              Nos experts à Abidjan analysent vos besoins pour une stratégie sur
+              mesure.
+            </p>
+          </div>
+
+          <div
+            class="relative z-10 flex flex-col gap-4 w-full md:w-auto shrink-0"
+          >
+            <a
+              href="mailto:contact@yadec.ci"
+              class="bg-white text-brand-primary px-8 py-4 rounded-full font-bold text-center transition-transform hover:-translate-y-1 shadow-xl flex items-center justify-center gap-3"
+            >
+              <i data-lucide="mail" class="w-5 h-5"></i> Écrivez-nous
+            </a>
+            <a
+              href="tel:+2252723498169"
+              class="bg-transparent text-white border border-white/30 px-8 py-4 rounded-full font-bold text-center transition-colors hover:bg-white/10 flex items-center justify-center gap-3"
+            >
+              <i data-lucide="phone" class="w-5 h-5"></i> +225 27 23 49 81 69
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-brand-light pt-20 pb-10 border-t border-gray-200">
+      <div class="max-w-7xl mx-auto px-5 lg:px-8">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16"
+        >
+          <div class="lg:col-span-2">
+            <img
+              class="h-10 w-auto object-contain mb-6"
+              src="/image.png"
+              alt="Yadec Consulting"
+            />
+            <p
+              class="text-gray-500 font-light text-sm max-w-sm mb-8 leading-relaxed"
+            >
+              Sublimez votre expérience client et accélérez vos ventes grâce à
+              un accompagnement stratégique et opérationnel sur mesure depuis
+              Abidjan.
+            </p>
+            <div class="flex gap-3">
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all"
+                ><i data-lucide="linkedin" class="w-4 h-4"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all"
+                ><i data-lucide="facebook" class="w-4 h-4"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-black hover:text-white hover:border-black transition-all"
+                ><i data-lucide="twitter" class="w-4 h-4"></i
+              ></a>
+              <a
+                href="#"
+                class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-gray-500 hover:bg-gradient-to-tr from-[#f9ce34] via-[#ee2a7b] to-[#6228d7] hover:text-white transition-all"
+                ><i data-lucide="instagram" class="w-4 h-4"></i
+              ></a>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              class="font-bold text-brand-dark uppercase tracking-widest text-xs mb-6"
+            >
+              Expertises
+            </h4>
+            <ul class="space-y-3">
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-gray-500 hover:text-brand-primary transition-colors"
+                  >Stratégie CX</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-gray-500 hover:text-brand-primary transition-colors"
+                  >Conseil Marketing</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-gray-500 hover:text-brand-primary transition-colors"
+                  >Automatisation & Workflows</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-sm text-gray-500 hover:text-brand-primary transition-colors"
+                  >Go-To-Market</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="font-bold text-brand-dark uppercase tracking-widest text-xs mb-6"
+            >
+              Bureau Abidjan
+            </h4>
+            <ul class="space-y-3 mb-6">
+              <li class="flex items-start gap-3 text-sm text-gray-500">
+                <i
+                  data-lucide="map-pin"
+                  class="w-4 h-4 text-brand-primary shrink-0 mt-0.5"
+                ></i>
+                Abidjan, Côte d'Ivoire
+              </li>
+              <li class="flex items-center gap-3 text-sm text-gray-500">
+                <i
+                  data-lucide="phone"
+                  class="w-4 h-4 text-brand-primary shrink-0"
+                ></i>
+                +225 27 23 49 81 69
+              </li>
+            </ul>
+            <div
+              class="inline-block px-3 py-1.5 bg-white border border-gray-200 rounded-md"
+            >
+              <p
+                class="text-[10px] text-brand-dark font-bold uppercase tracking-widest"
+              >
+                Cabinet Agréé FDFP
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-4"
+        >
+          <p class="text-xs text-gray-400">
+            © 2026 Yadec Consulting · Abidjan. Tous droits réservés.
+          </p>
+          <div class="flex gap-6">
+            <a
+              href="#"
+              class="text-xs text-gray-400 hover:text-brand-primary transition-colors"
+              >Mentions légales</a
+            >
+            <a
+              href="#"
+              class="text-xs text-gray-400 hover:text-brand-primary transition-colors"
+              >Confidentialité</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Initialisation Lucide
+      lucide.createIcons();
+
+      // Custom Cursor logic
+      const cursor = document.getElementById("cursor");
+      const ring = document.getElementById("cursorRing");
+      if (cursor && ring) {
+        let mouseX = 0,
+          mouseY = 0,
+          ringX = 0,
+          ringY = 0;
+        document.addEventListener("mousemove", (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          cursor.style.left = mouseX + "px";
+          cursor.style.top = mouseY + "px";
+        });
+        function animateRing() {
+          ringX += (mouseX - ringX) * 0.15;
+          ringY += (mouseY - ringY) * 0.15;
+          ring.style.left = ringX + "px";
+          ring.style.top = ringY + "px";
+          requestAnimationFrame(animateRing);
+        }
+        animateRing();
+      }
+
+      // Scroll Header
+      const header = document.getElementById("mainNav");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+          header.classList.add("py-3", "shadow-sm");
+          header.classList.remove("py-5");
+        } else {
+          header.classList.add("py-5");
+          header.classList.remove("py-3", "shadow-sm");
+        }
+      });
+
+      // Reveal Animations
+      const reveals = document.querySelectorAll(".reveal");
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+      );
+
+      reveals.forEach((el) => revealObserver.observe(el));
+    </script>
+  </body>
+</html>
