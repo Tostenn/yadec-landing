@@ -865,6 +865,225 @@
   .delay-4 { transition-delay: 0.4s; }
   .delay-5 { transition-delay: 0.5s; }
 
+  /* ═══════════════════════════════
+     MODAL
+  ═══════════════════════════════ */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    background: rgba(8,15,23,0.75);
+    backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+
+  .modal-overlay.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .modal {
+    background: var(--white);
+    border-radius: 6px;
+    width: 100%;
+    max-width: 480px;
+    overflow: hidden;
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    position: relative;
+  }
+
+  .modal-overlay.open .modal {
+    transform: translateY(0) scale(1);
+  }
+
+  .modal-header {
+    background: var(--navy);
+    padding: 32px 36px 28px;
+    position: relative;
+  }
+
+  .modal-header-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .modal-header h3 {
+    font-family: var(--serif);
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .modal-header p {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px; right: 16px;
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.08);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(255,255,255,0.5);
+    transition: background 0.15s, color 0.15s;
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .modal-close:hover { background: rgba(255,255,255,0.15); color: var(--white); }
+
+  .modal-body {
+    padding: 32px 36px 36px;
+  }
+
+  .modal-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+
+  .modal-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .modal-field.full { grid-column: span 2; }
+
+  .modal-field label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+  }
+
+  .modal-field input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--text-dark);
+    background: var(--cream);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .modal-field input:focus {
+    border-color: var(--gold);
+    background: var(--white);
+  }
+
+  .modal-field input::placeholder { color: var(--text-muted); }
+
+  .modal-field input.error { border-color: #E24B4A; }
+
+  .modal-error-msg {
+    font-size: 11px;
+    color: #E24B4A;
+    margin-top: 2px;
+    display: none;
+  }
+
+  .modal-field.has-error .modal-error-msg { display: block; }
+
+  .modal-submit {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px 28px;
+    background: var(--gold);
+    color: var(--navy);
+    border: none;
+    border-radius: 3px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .modal-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .modal-submit:active { transform: translateY(0); }
+  .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .modal-note {
+    margin-top: 14px;
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .modal-note a { color: var(--gold); text-decoration: none; }
+
+  /* Success state */
+  .modal-success {
+    display: none;
+    text-align: center;
+    padding: 48px 36px;
+  }
+
+  .modal-success.show { display: block; }
+  .modal-body-form.hide { display: none; }
+
+  .success-icon {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.12);
+    border: 2px solid var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 24px;
+  }
+
+  .modal-success h4 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+
+  .modal-success p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-mid);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .modal-success .btn-primary {
+    display: inline-flex;
+  }
+
   /* Responsive */
   @media (max-width: 900px) {
     nav { padding: 0 24px; }
@@ -1316,16 +1535,149 @@
   <p>www.yadec.ci</p>
 </div>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-header">
+      <button class="modal-close" id="modalClose" aria-label="Fermer">✕</button>
+      <div class="modal-header-tag">Rapport gratuit</div>
+      <h3 id="modalTitle">Téléchargez le<br>Rapport B2B Afrique 2025</h3>
+      <p>Recevez le rapport complet en PDF — 17 slides, données terrain et frameworks actionnables.</p>
+    </div>
+    <div class="modal-body">
+      <div class="modal-body-form" id="modalForm">
+        <div class="modal-row">
+          <div class="modal-field" id="field-nom">
+            <label for="input-nom">Nom</label>
+            <input type="text" id="input-nom" placeholder="Kouassi" autocomplete="family-name">
+            <span class="modal-error-msg">Champ requis</span>
+          </div>
+          <div class="modal-field" id="field-prenom">
+            <label for="input-prenom">Prénom</label>
+            <input type="text" id="input-prenom" placeholder="Jean" autocomplete="given-name">
+            <span class="modal-error-msg">Champ requis</span>
+          </div>
+        </div>
+        <div class="modal-field" id="field-email">
+          <label for="input-email">Adresse email professionnelle</label>
+          <input type="email" id="input-email" placeholder="jean@entreprise.ci" autocomplete="email">
+          <span class="modal-error-msg" id="email-error-msg">Email invalide</span>
+        </div>
+        <button class="modal-submit" id="modalSubmit">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Accéder au rapport
+        </button>
+        <p class="modal-note">
+          🔒 Aucun spam. Vos données sont confidentielles.<br>
+          En soumettant, vous acceptez notre <a href="https://yadec.ci" target="_blank">politique de confidentialité</a>.
+        </p>
+      </div>
+      <div class="modal-success" id="modalSuccess">
+        <div class="success-icon">✓</div>
+        <h4>Merci, <span id="successName">Jean</span> !</h4>
+        <p>Votre rapport est prêt. Cliquez ci-dessous pour le télécharger. Vous recevrez également un email de confirmation.</p>
+        <a href="https://yadec.ci" target="_blank" class="btn-primary" style="display:inline-flex; background:var(--gold); color:var(--navy); padding:14px 28px; border-radius:2px; font-weight:700; font-size:13px; letter-spacing:0.06em; text-decoration:none; text-transform:uppercase; gap:10px;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Télécharger le PDF
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
+  /* ── Scroll animations ── */
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(el => {
-      if (el.isIntersecting) {
-        el.target.classList.add('visible');
-      }
+      if (el.isIntersecting) el.target.classList.add('visible');
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  /* ── Modal logic ── */
+  const overlay  = document.getElementById('modalOverlay');
+  const closeBtn = document.getElementById('modalClose');
+  const submitBtn = document.getElementById('modalSubmit');
+
+  function openModal() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => document.getElementById('input-nom').focus(), 300);
+  }
+
+  function closeModal() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* Attach to ALL download buttons */
+  document.querySelectorAll('a[href="#cta"], .btn-primary, .nav-cta').forEach(btn => {
+    if (btn.textContent.toLowerCase().includes('télécharger') ||
+        btn.textContent.toLowerCase().includes('accéder au rapport') ||
+        btn.classList.contains('nav-cta')) {
+      btn.addEventListener('click', function(e) {
+        if (!this.closest('.modal') && !this.closest('.modal-success')) {
+          e.preventDefault();
+          openModal();
+        }
+      });
+    }
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closeModal();
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  /* ── Validation & submit ── */
+  function validateField(fieldId, inputId, condition) {
+    const field = document.getElementById(fieldId);
+    const input = document.getElementById(inputId);
+    const valid = condition(input.value.trim());
+    field.classList.toggle('has-error', !valid);
+    input.classList.toggle('error', !valid);
+    return valid;
+  }
+
+  submitBtn.addEventListener('click', function() {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const v1 = validateField('field-nom',    'input-nom',    v => v.length > 0);
+    const v2 = validateField('field-prenom', 'input-prenom', v => v.length > 0);
+    const v3 = validateField('field-email',  'input-email',  v => emailRegex.test(v));
+
+    if (!v1 || !v2 || !v3) return;
+
+    const prenom = document.getElementById('input-prenom').value.trim();
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="animation:spin 0.8s linear infinite"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg> Envoi en cours…';
+
+    setTimeout(() => {
+      document.getElementById('successName').textContent = prenom;
+      document.getElementById('modalForm').classList.add('hide');
+      document.getElementById('modalSuccess').classList.add('show');
+      submitBtn.disabled = false;
+    }, 1200);
+  });
+
+  /* Live validation on blur */
+  ['input-nom', 'input-prenom', 'input-email'].forEach(id => {
+    document.getElementById(id).addEventListener('blur', function() {
+      const fieldId = 'field-' + id.replace('input-', '');
+      if (id === 'input-email') {
+        validateField(fieldId, id, v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) || v === '');
+      } else {
+        validateField(fieldId, id, v => v.length > 0 || document.getElementById(id).value === '');
+      }
+    });
+  });
 </script>
+<style>
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
 </body>
 </html>
